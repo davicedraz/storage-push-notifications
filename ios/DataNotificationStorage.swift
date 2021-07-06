@@ -28,13 +28,8 @@ class DataNotificationStorage {
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             .appendingPathComponent(dbPath)
         
-//        // FIXME:
-//        let path = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.br.com.oi.tecnicovirtual.onesignal");
-//        os_log("SQLite URL: %s", fileURL.absoluteString)
-        
         var db: OpaquePointer? = nil
         let result = sqlite3_open(fileURL.path, &db)
-//        let result = sqlite3_open_v2(fileURL.path, &db, SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE, nil)
         
         if result == SQLITE_OK {
             print("SQLite: Successfully opened connection to database at \(dbPath)")
